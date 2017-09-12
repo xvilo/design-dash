@@ -6,19 +6,10 @@ ns.prototype.getDepartures = function() {
     http.doRequest('data.php', 'type=ns&key=city&value=leiden', 'POST', this.parseDepartureData, this);
 };
 
-ns.prototype.calculateDepartureTime = function() {
-    var departures = document.getElementsByClassName('ns__departure-time');
-
-    for (var i = 0; i < departures.length; i++) {
-        moment.locale('nl');
-
-        var el = departures[i],
-        elTime = moment(el.dataset.time);
-
-        el.innerText = moment(elTime).fromNow();
-    }
-};
-
+/**
+ * Parses XMLHttpRequest response
+ * @param http
+ */
 ns.prototype.parseDepartureData = function(http) {
     var departureData = JSON.parse(http.responseText);
     var domTemplate   = new domTemplates(document.getElementsByClassName('js-template-departure')[0]);
@@ -30,4 +21,34 @@ ns.prototype.parseDepartureData = function(http) {
     });
 
     this.calculateDepartureTime();
+    this.setDelayText();
+};
+
+/**
+ * Creates human readable departure time.
+ */
+ns.prototype.calculateDepartureTime = function() {
+    var departures = document.getElementsByClassName('ns__departure-time');
+
+    for (var i = 0; i < departures.length; i++) {
+        moment.locale('nl');
+
+        var el = departures[i],
+            elTime = moment(el.dataset.time);
+
+        el.innerText = moment(elTime).fromNow();
+    }
+};
+
+ns.prototype.setDelayText = function() {
+    var departures = document.getElementsByClassName('ns__departure-time');
+
+    for (var i = 0; i < departures.length; i++) {
+        moment.locale('nl');
+
+        var el = departures[i],
+            elTime = moment(el.dataset.time);
+
+        el.innerText = moment(elTime).fromNow();
+    }
 };
