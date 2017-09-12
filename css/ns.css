@@ -69,6 +69,7 @@
 .ns__footer {
     position: fixed;
     bottom: 0;
+    right: 0;
     font-size: 0.75rem;
     padding: .25rem .5rem;
     background: yellow;
