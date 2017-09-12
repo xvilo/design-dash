@@ -1,4 +1,3 @@
-
 var xhr =  function() {
     this.http = new XMLHttpRequest();
 };

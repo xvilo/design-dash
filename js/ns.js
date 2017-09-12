@@ -6,6 +6,16 @@ ns.prototype.getDepartures = function() {
     http.doRequest('/data.php', 'type=ns&key=city&value=leiden', 'POST', this.parseDepartureData);
 };
 
+ns.prototype.calculateDepartureTime = function() {
+    var departures = document.getElementsByClassName('ns__departure-time');
+    console.log(departures);
+
+    for (var i = 0; i < departures.length; i++) {
+        console.log(departures[i]); //second console output
+    }
+
+};
+
 ns.prototype.parseDepartureData = function(http) {
     var departureData = JSON.parse(http.responseText);
     var domTemplate   = new domTemplates(document.getElementsByClassName('js-template-departure')[0]);

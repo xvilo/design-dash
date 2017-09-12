@@ -21,14 +21,31 @@
 }
 
 .ns__departure {
-    display: flex;
+    display: block;
 }
 
 .ns__departure-info,
 .ns__departure-type,
 .ns__departure-timedata {
-    display: block;
+    display: inline-block;
     padding: .5rem 1rem;
+}
+
+.ns__departure-info {
+    width: 48%;
+}
+
+.ns__departure-type,
+.ns__departure-timedata{
+    width: 20%;
+}
+
+.ns__departure-type__Sprinter:before {
+    content: 'sprinter';
+}
+
+.ns__departure-type__Intercity:before {
+    content: 'Intercity';
 }
 
 .ns__departures .ns__departure:nth-child(odd) {
@@ -37,4 +54,12 @@
 
 .pane.ns {
     margin-top: 4rem;
+}
+
+.ns__departure-destination-route {
+    font-size: 0.75rem;
+}
+
+.ns__departure-destination {
+    font-size: 1.25rem;
 }
