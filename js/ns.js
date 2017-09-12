@@ -41,14 +41,13 @@ ns.prototype.calculateDepartureTime = function() {
 };
 
 ns.prototype.setDelayText = function() {
-    var departures = document.getElementsByClassName('ns__departure-time');
+    var departures = document.getElementsByClassName('ns__departure');
 
     for (var i = 0; i < departures.length; i++) {
-        moment.locale('nl');
+        var el = departures[i];
 
-        var el = departures[i],
-            elTime = moment(el.dataset.time);
-
-        el.innerText = moment(elTime).fromNow();
+        if(el.dataset.delay != ''){
+            el.classList.add('ns__departure--has-delay');
+        }
     }
 };

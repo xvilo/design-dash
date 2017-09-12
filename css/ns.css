@@ -24,6 +24,7 @@
 
 .ns__departure {
     display: block;
+    position: relative;
 }
 
 .ns__departure-info,
@@ -74,4 +75,19 @@
     padding: .25rem .5rem;
     background: #e5d308;
     font-weight: bold;
+}
+
+.ns__departure--has-delay {
+    background: #f56263;
+}
+
+.ns__departure--has-delay:after {
+    content: attr(data-delay);
+    background: #00417f;
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    padding: .25rem .5rem;
 }
