@@ -1,9 +1,13 @@
-var ns = function() {};
+var ns = function(city) {
+    this.city = city;
+};
 
 // NS
 ns.prototype.getDepartures = function() {
+    this.setHeaderText('Vertrektijden station ' + this.city);
+
     var http = new xhr;
-    http.doRequest('data.php', 'type=ns&key=city&value=leiden', 'POST', this.parseDepartureData, this);
+    http.doRequest('data.php', 'type=ns&key=city&value=' + this.city, 'POST', this.parseDepartureData, this);
 };
 
 /**
@@ -34,12 +38,15 @@ ns.prototype.calculateDepartureTime = function() {
         moment.locale('nl');
 
         var el = departures[i],
-            elTime = moment(el.dataset.time);
+            elTime = moment(el.dataset['time']);
 
         el.innerText = moment(elTime).fromNow();
     }
 };
 
+/**
+ * Check's if departure has delay and add's the `ns__departure--has-delay`-modifier class.
+ */
 ns.prototype.setDelayText = function() {
     var departures = document.getElementsByClassName('ns__departure');
 
@@ -50,4 +57,15 @@ ns.prototype.setDelayText = function() {
             el.classList.add('ns__departure--has-delay');
         }
     }
+};
+
+/**
+ * Check's if departure has delay and add's the `ns__departure--has-delay`-modifier class.
+ */
+ns.prototype.setHeaderText = function(text) {
+    console.log('hi');
+    var headerElement = document.getElementsByClassName('ns__header-title')[0];
+    console.log(headerElement);
+    headerElement.innerText = text;
+    console.log('bye');
 };
