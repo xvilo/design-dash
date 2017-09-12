@@ -3,7 +3,7 @@ var ns = function() {};
 // NS
 ns.prototype.getDepartures = function() {
     var http = new xhr;
-    http.doRequest('/data.php', 'type=ns&key=city&value=leiden', 'POST', this.parseDepartureData, this);
+    http.doRequest('data.php', 'type=ns&key=city&value=leiden', 'POST', this.parseDepartureData, this);
 };
 
 ns.prototype.calculateDepartureTime = function() {
