@@ -3,16 +3,10 @@ var xhr =  function() {
 };
 
 // AJAX
-xhr.prototype.doRequest = function(url, params, method, callback) {
-    var that = this;
-
+xhr.prototype.doRequest = function(url, params, method, callback, scope) {
     this.http.open(method, url, true);
     this.http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     this.http.send(params);
 
-    this.http.onreadystatechange = function() {
-        if(that.http.readyState == 4) {
-            callback(that.http);
-        }
-    };
+    this.http.onreadystatechange = callback.bind(scope, this.http);
 };
