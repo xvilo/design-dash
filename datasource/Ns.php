@@ -3,7 +3,8 @@
 /**
  * Class Ns
  */
-class Ns {
+class Ns
+{
     private $apiUser;
     private $apiSecret;
     private $apiPath = 'https://webservices.ns.nl/ns-api-avt?';
@@ -41,7 +42,6 @@ class Ns {
      */
     private function doCurlRequest($key, $value)
     {
-
         $apiUrl = $this->apiPath.$key.'='.$value;
 
         $ch = curl_init();
