@@ -1,0 +1,40 @@
+.ns__header {
+    background: #137BD0;
+    width: 100%;
+    height: 4rem;
+    margin-top: -4rem;
+    padding-left: 3rem;
+    position: fixed;
+}
+
+.ns__header-title {
+    color: white;
+    font-size: 2rem;
+    margin: 0;
+    line-height: 5.5rem;
+}
+
+.ns__departures {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ns__departure {
+    display: flex;
+}
+
+.ns__departure-info,
+.ns__departure-type,
+.ns__departure-timedata {
+    display: block;
+    padding: .5rem 1rem;
+}
+
+.ns__departures .ns__departure:nth-child(odd) {
+    background-color: #ccc;
+}
+
+.pane.ns {
+    margin-top: 4rem;
+}
