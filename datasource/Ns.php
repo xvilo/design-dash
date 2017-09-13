@@ -32,6 +32,7 @@ class Ns
     private function get($key, $value)
     {
         $data = $this->doCurlRequest($key, $value);
+        sleep(2);
         return simplexml_load_string($data, 'SempleXMLElement');
     }
 

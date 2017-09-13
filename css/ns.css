@@ -77,8 +77,13 @@
     font-weight: bold;
 }
 
+.ns__departure--has-delay:first-child {
+    border-bottom: 2px solid red;
+}
+
 .ns__departure--has-delay {
-    background: #f56263;
+    background-color: #f56263!important;
+    border-bottom: 2px solid red;
 }
 
 .ns__departure--has-delay:after {

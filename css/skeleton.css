@@ -1,0 +1,38 @@
+.skeleton-text {
+    display: inline-block;
+    height: 1em;
+    background: #A7A7A7;
+    width: 1em;
+    animation: placeholder 1400ms linear infinite;
+}
+
+.skeleton-long {
+    width: 15em;
+}
+
+.skeleton-mid {
+    width: 10em;
+}
+
+.skeleton-short {
+    width: 5em;
+}
+
+
+@keyframes placeholder {
+    0% {
+        background-color: rgba(64, 53, 78, .12);
+    }
+    25% {
+        background-color: rgba(64, 53, 78, .12);
+    }
+    50% {
+        background-color: rgba(64, 53, 78, .06);
+    }
+    75% {
+        background-color: rgba(64, 53, 78, .12);
+    }
+    100% {
+        background-color: rgba(64, 53, 78, .12);
+    }
+}

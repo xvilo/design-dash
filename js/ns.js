@@ -24,6 +24,9 @@ ns.prototype.parseDepartureData = function(http) {
         departuresList.innerHTML = departuresList.innerHTML + htmlElement.innerHTML;
     });
 
+    // Remove loading skeleton nodes
+    new skeleton();
+
     this.calculateDepartureTime();
     this.setDelayText();
 };
