@@ -1,5 +1,6 @@
 var ns = function(city) {
     this.city = city;
+    this.timezone = "Europe/Amsterdam";
 };
 
 // NS
@@ -15,9 +16,12 @@ ns.prototype.getDepartures = function() {
  * @param http
  */
 ns.prototype.parseDepartureData = function(http) {
+    if (http.readyState != 4){
+        return;
+    }
     var departureData = JSON.parse(http.responseText);
     var domTemplate   = new domTemplates(document.getElementsByClassName('js-template-departure')[0]);
-    var departuresList = document.getElementsByClassName('js-ns-departures')[0];
+    var departuresList = document.getElementsByClassName('js-departures-list')[0];
 
     departureData['VertrekkendeTrein'].forEach(function(entry){
         var htmlElement = domTemplate.createDomElements(entry);
@@ -35,7 +39,7 @@ ns.prototype.parseDepartureData = function(http) {
  * Creates human readable departure time.
  */
 ns.prototype.calculateDepartureTime = function() {
-    var departures = document.getElementsByClassName('ns__departure-time');
+    var departures = document.getElementsByClassName('js-ns-dept-timeinfo');
 
     for (var i = 0; i < departures.length; i++) {
         moment.locale('nl');
@@ -43,7 +47,7 @@ ns.prototype.calculateDepartureTime = function() {
         var el = departures[i],
             elTime = moment(el.dataset['time']);
 
-        el.innerText = moment(elTime).fromNow();
+        el.querySelector('.js-ns-dept-time').innerText = moment(elTime).tz(this.timezone).format('LT');
     }
 };
 
@@ -51,13 +55,13 @@ ns.prototype.calculateDepartureTime = function() {
  * Check's if departure has delay and add's the `ns__departure--has-delay`-modifier class.
  */
 ns.prototype.setDelayText = function() {
-    var departures = document.getElementsByClassName('ns__departure');
+    var departures = document.getElementsByClassName('ns__departure-delay');
 
     for (var i = 0; i < departures.length; i++) {
         var el = departures[i];
 
-        if(el.dataset.delay != ''){
-            el.classList.add('ns__departure--has-delay');
+        if(el.dataset['time'] != ''){
+            el.parentElement.parentElement.classList.add('ns__departure--has-delay')
         }
     }
 };
@@ -66,9 +70,6 @@ ns.prototype.setDelayText = function() {
  * Check's if departure has delay and add's the `ns__departure--has-delay`-modifier class.
  */
 ns.prototype.setHeaderText = function(text) {
-    console.log('hi');
     var headerElement = document.getElementsByClassName('ns__header-title')[0];
-    console.log(headerElement);
     headerElement.innerText = text;
-    console.log('bye');
 };

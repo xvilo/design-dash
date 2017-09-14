@@ -37,6 +37,11 @@ domTemplates.prototype.createDomElements = function(data) {
 
     // Filter out all variables that aren't replaced
     newDomElement = newDomElement.replace(/{.*?}/gm, '');
+    var domElement = str2DOMElement(newDomElement);
 
-    return str2DOMElement(newDomElement);
+    if(domElement.tagName == "TABLE") {
+        domElement = domElement.querySelector('tr');
+    }
+
+    return domElement;
 };

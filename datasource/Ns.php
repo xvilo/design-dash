@@ -24,6 +24,25 @@ class Ns
         return $this->get('station', $station);
     }
 
+    public function getParsedStationDepartureData($station)
+    {
+        $data = $this->getStationDepartureData($station);
+
+        return $this->parseStationDepartureData($data);
+    }
+
+    private function parseStationDepartureData($data)
+    {
+        $return = [];
+        foreach($data as $item){
+            die(var_dump($item));
+            if(isset($item->VertrekVertraging)) {
+
+            }
+        }
+        die(var_dump($data));
+    }
+
     /**
      * @param $key
      * @param $value

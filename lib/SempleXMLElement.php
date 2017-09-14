@@ -1,8 +1,9 @@
 <?php
 
 /**
- * This class add's a simple function to a SimpleXMLElement Object.
- * To JSON. This enables one to output a json string from a XML object.
+ * This class adds a simple function to a SimpleXMLElement Object.
+ * To JSON. This enables one to output a json string from an
+ * SimpleXMLElement object.
  *
  * Class SempleXMLElement
  */

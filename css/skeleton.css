@@ -18,6 +18,10 @@
     width: 5em;
 }
 
+.skeleton-tiny {
+    width: 2.5em;
+}
+
 
 @keyframes placeholder {
     0% {
